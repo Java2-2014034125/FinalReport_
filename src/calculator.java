@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ public class calculator extends JFrame implements ActionListener {
 	
 	private double result =0;
 	private String es = "=";
+	private boolean startOfNumber = true;
 	
 	public calculator(){
 		this.setSize(500,400);
@@ -43,6 +45,40 @@ public class calculator extends JFrame implements ActionListener {
 		
 	}
 	
+	
+	public void actionPerformed(ActionEvent e){
+		   String command = e.getActionCommand();
+		   if(command.charAt(0)=='C'){
+		      startOfNumber = true;
+		      result = 0;
+		      es = '=';
+		      screen.setText("0.0");
+		   }
+		   else if(command.charAt(0) >= '0' && command.charAt(0) <= '0' || command.equals(".")){
+		      if(startOfNumber == true)
+		         screen.setText(command);
+		      else
+		         screen.setText(screen.getText() + command);
+		      startOfNumber = false;
+		   }
+		   else{
+		      if(startOfNumber){
+		         if(command.equals("-")){
+		            screen.setText(command);
+		            startOfNumber = false;
+		         }
+		         else
+		            es = command;
+		      }
+		      else{
+		         double x = Double.parseDouble(screen.getText());
+		         calculate(x); 
+		         es = command;
+		         startOfNumber = true;
+		      }
+		   }
+		}
+
 	
 
 	public static void main(String[] args) {
