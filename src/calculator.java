@@ -18,7 +18,7 @@ public class calculator extends JFrame implements ActionListener {
 							  "0",".","+/-","/","="};
 	
 	private double result =0;
-	private String es = "=";
+	private String es = "="; //equal sign
 	
 	public calculator(){
 		this.setSize(500,400);
