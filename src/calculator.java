@@ -23,7 +23,7 @@ public class calculator extends JFrame implements ActionListener {
 	private String es = "=";
 	private boolean startOfNumber = true;
 
-	private String es = "="; //equal sign
+	
 
 	
 	public calculator(){
