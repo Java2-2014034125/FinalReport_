@@ -19,7 +19,6 @@ public class calculator extends JFrame implements ActionListener {
 							  "0",".","+/-","/","="};
 	
 	private double result =0;
-
 	private String es = "=";
 	private boolean startOfNumber = true;
 
@@ -54,6 +53,7 @@ public class calculator extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		   String command = e.getActionCommand();
+		   screen.setText(screen.getText() + command);
 		   if(command.charAt(0)=='C'){
 		      startOfNumber = true;
 		      result = 0;
@@ -86,18 +86,19 @@ public class calculator extends JFrame implements ActionListener {
 		}
 
 	private void calculate(double n) {
- 		if(es.equals("+"))
+		
+		if(es.equals("^2"))
+ 			result = result*n*n;
+		else if(es.equals("+"))
  			result += n;
+		else if(es.equals("%"))
+ 			result %= n;
  		else if(es.equals("-"))
  			result -= n;
  		else if(es.equals("*"))
  			result *= n;
  		else if(es.equals("/"))
  			result /= n;
- 		else if(es.equals("^2"))
- 			result = result*n*n;
- 		else if(es.equals("%"))
- 			result %= n;
  		else if(es.equals("="))
  			result = n;
  		screen.setText(" " + result);
