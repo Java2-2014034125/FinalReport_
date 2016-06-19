@@ -19,12 +19,12 @@ public class calculator extends JFrame implements ActionListener {
 							  "0",".","+/-","/","="};
 	
 	private double result =0;
-<<<<<<< HEAD
+
 	private String es = "=";
 	private boolean startOfNumber = true;
-=======
+
 	private String es = "="; //equal sign
->>>>>>> origin/master
+
 	
 	public calculator(){
 		this.setSize(500,400);
@@ -57,7 +57,7 @@ public class calculator extends JFrame implements ActionListener {
 		   if(command.charAt(0)=='C'){
 		      startOfNumber = true;
 		      result = 0;
-		      es = '=';
+		      es = "=";
 		      screen.setText("0.0");
 		   }
 		   else if(command.charAt(0) >= '0' && command.charAt(0) <= '0' || command.equals(".")){
@@ -84,6 +84,25 @@ public class calculator extends JFrame implements ActionListener {
 		      }
 		   }
 		}
+
+	private void calculate(double n) {
+ 		if(es.equals("+"))
+ 			result += n;
+ 		else if(es.equals("-"))
+ 			result -= n;
+ 		else if(es.equals("*"))
+ 			result *= n;
+ 		else if(es.equals("/"))
+ 			result /= n;
+ 		else if(es.equals("^2"))
+ 			result = result*n*n;
+ 		else if(es.equals("%"))
+ 			result %= n;
+ 		else if(es.equals("="))
+ 			result = n;
+ 		screen.setText(" " + result);
+ 		
+	}
 
 	
 
