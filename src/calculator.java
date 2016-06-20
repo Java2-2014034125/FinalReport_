@@ -12,11 +12,11 @@ public class calculator extends JFrame implements ActionListener {
 	private JPanel panel;
 	private JButton[] buttons;
 	private JTextField screen;
-	private String[] labels = {" "," "," "," ","^2",
+	private String[] labels = {
 							  "7","8","9","+","%",
 							  "4","5","6","-","AC",
 							  "1","2","3","*","C",
-							  "0",".","+/-","/","="};
+							  "0","."," ","/","="};
 	
 	private double result =0;
 	private String es = "=";
@@ -36,7 +36,7 @@ public class calculator extends JFrame implements ActionListener {
 		screen.setText(" ");
 		buttons = new JButton[25];
 		
-		for(int i =0; i<25; i++){
+		for(int i =0; i<20; i++){
 			buttons[i] = new JButton(labels[i]);
 			panel.add(buttons[i]);
 			if(i>4)
@@ -53,14 +53,13 @@ public class calculator extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		   String command = e.getActionCommand();
-		   screen.setText(screen.getText() + command);
 		   if(command.charAt(0)=='C'){
 		      startOfNumber = true;
 		      result = 0;
 		      es = "=";
-		      screen.setText("0.0");
+		      screen.setText(" ");
 		   }
-		   else if(command.charAt(0) >= '0' && command.charAt(0) <= '0' || command.equals(".")){
+		   else if(command.charAt(0) >= '0' && command.charAt(0) <= '9' || command.equals(".")){
 		      if(startOfNumber == true)
 		         screen.setText(command);
 		      else
@@ -86,10 +85,7 @@ public class calculator extends JFrame implements ActionListener {
 		}
 
 	private void calculate(double n) {
-		
-		if(es.equals("^2"))
- 			result = result*n*n;
-		else if(es.equals("+"))
+		if(es.equals("+"))
  			result += n;
 		else if(es.equals("%"))
  			result %= n;
@@ -111,5 +107,4 @@ public class calculator extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		calculator c = new calculator();
 	}
-
 }
