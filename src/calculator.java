@@ -39,7 +39,6 @@ public class calculator extends JFrame implements ActionListener {
 		for(int i =0; i<20; i++){
 			buttons[i] = new JButton(labels[i]);
 			panel.add(buttons[i]);
-			if(i>4)
 			buttons[i].addActionListener(this);
 		}
 		add(screen,BorderLayout.NORTH);
